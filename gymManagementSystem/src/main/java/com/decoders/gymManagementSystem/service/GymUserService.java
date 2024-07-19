@@ -1,6 +1,7 @@
 package com.decoders.gymManagementSystem.service;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class GymUserService implements UserDetailsService {
 	private GymUserRepository gymUserRepository;
 	
 	private String type;
+	private GymUser users;
 	
 	public void save(GymUser gymUser) {
 		gymUserRepository.save(gymUser);
@@ -31,11 +33,17 @@ public class GymUserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		GymUser user = gymUserRepository.findById(username).get();
-		type = user.getType();
-		return user;
+		users = gymUserRepository.findById(username).get();
+		type = users.getType();
+		return users;
 	}
-	
+
+	public GymUser getUser() {
+		return users;
+	}
+	public List<String> getAllCustomers(){
+		return gymUserRepository.findAllMembersUsers();
+	}
 	public boolean isUsernameExists(String username) {
 		Optional<GymUser> user =  gymUserRepository.findById(username);
 		return user.isPresent();

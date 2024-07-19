@@ -17,7 +17,7 @@ public class SlotDaoImpl implements SlotDao {
 
 	@Override
 	public void saveNewSLot(Slot slot) {
-		Long val = repository.findLastItemId();
+		Long val = repository.findLastSlotId();
 
 		if (val == null)
 			val = 1L;

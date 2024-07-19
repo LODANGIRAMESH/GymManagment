@@ -285,7 +285,7 @@
         </div>
         <div style="display: flex; flex-direction: column; gap: 5px;">
             <span>Other actions:</span>
-          <!--    <a href="/book-slot" onclick="setActive(this)" class="tab">Slot Booking</a> -->
+            <a href="/book-slot" onclick="setActive(this)" class="tab">Slot Booking</a>
             <a href="/logout"><div class="tab">Logout</div></a>
         </div>
     </div>

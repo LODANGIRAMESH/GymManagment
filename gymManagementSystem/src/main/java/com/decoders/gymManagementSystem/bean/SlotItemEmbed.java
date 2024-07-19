@@ -24,6 +24,24 @@ public class SlotItemEmbed implements Serializable {
 		super();
 
 	}
+	public Long getItemId() {
+		// TODO Auto-generated method stub
+		return itemId;
+	}
+
+	public Long getSlotId() {
+		// TODO Auto-generated method stub
+		return slotId;
+	}
+
+	public void setSlotId(Long slotId) {
+		this.slotId = slotId;
+	}
+
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -40,5 +58,4 @@ public class SlotItemEmbed implements Serializable {
 		else
 			return false;
 	}
-
 }

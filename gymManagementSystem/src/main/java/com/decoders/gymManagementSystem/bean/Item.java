@@ -1,59 +1,51 @@
 package com.decoders.gymManagementSystem.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class GymItem {
-
-	@Id
+public class Item {
 	private Long itemId;
 	private String itemName;
 	private Integer totalSeat;
-
-//	private Integer seatBooked;
-
-	public GymItem() {
+	private Integer seatVacant;
+	public Item() {
 		super();
-
+		// TODO Auto-generated constructor stub
 	}
-	public GymItem(Item item) {
-		super();
-		this.itemId =item.getItemId();
-		this.itemName = item.getItemName();
-		this.totalSeat = item.getTotalSeat();
-		
+	public Item(GymItem gym) {
+		this.itemId = gym.getItemId();
+		this.itemName = gym.getItemName();
+		this.totalSeat = gym.getTotalSeat();
+		this.seatVacant = 0;		
 	}
-
-	public GymItem(Long itemId, String itemName, Integer totalSeat) {
+	public Item(Long itemId, String itemName, Integer totalSeat, Integer seatVacant) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.totalSeat = totalSeat;
+		this.seatVacant = seatVacant;
 	}
 
 	public Long getItemId() {
 		return itemId;
 	}
-
 	public void setItemId(Long itemId) {
 		this.itemId = itemId;
 	}
-
 	public String getItemName() {
 		return itemName;
 	}
-
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-
 	public Integer getTotalSeat() {
 		return totalSeat;
 	}
-
 	public void setTotalSeat(Integer totalSeat) {
 		this.totalSeat = totalSeat;
+	}
+	public Integer getSeatVacant() {
+		return seatVacant;
+	}
+	public void setSeatVacant(Integer seatVacant) {
+		this.seatVacant = seatVacant;
 	}
 	
 }

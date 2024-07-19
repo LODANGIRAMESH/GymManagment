@@ -8,5 +8,5 @@ import com.decoders.gymManagementSystem.bean.Slot;
 public interface SlotRepository extends JpaRepository<Slot, Long>{
 
 	@Query("select max(slotId) from Slot")
-	public Long findLastItemId();
+	public Long findLastSlotId();
 }

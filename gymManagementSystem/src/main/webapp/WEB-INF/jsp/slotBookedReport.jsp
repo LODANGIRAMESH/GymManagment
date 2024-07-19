@@ -64,6 +64,10 @@ th {
         	color: white;
         	font-size: 28px;
    }
+    a.enquiry-link {
+        color: red;
+        text-decoration: none;
+    }
 </style>
 <script>
 function goBack() {
@@ -79,28 +83,35 @@ function setActive(element) {
 <body>
   <!-- Available Slots  -->
         <div class="container">
-            <h2 class="form-title">Available Slots</h2>
+            <h2 class="form-title">Slot Booked Report</h2>
             <div style="display: flex; align-items: center; justify-content: center;">
-                <table>
+               <table>
     <thead>
         <tr>
-            <th>Slot Number</th>
-            <th>Slot Time</th>
-            <th>Slot Price</th>
-            <th>Enquiry</th>
+            <th>Booking Id</th>
+            <th>Slot Id</th>
+            <th>Item Id</th>
+            <th>User Id</th>
+            <th>Select</th>
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${slotList}" var="slot">
+        <c:forEach items="${bookList}" var="gymBook">
             <tr>
-                <td>${slot.slotId}</td>
-                <td>${slot.slotTime}</td>
-                <td>${slot.pricing}</td>
-<td><a href="<c:url value='/slot-show/${slot.slotId}'/>" class="enquiry-link">Slot_Enquiry&_Book</a></td>
+                <td>${gymBook.bookingId}</td>
+                <td>${gymBook.slotId}</td>
+                <td>${gymBook.itemId}</td>
+                <td>${gymBook.username}</td>
+                <td>
+                    <a href="/delete-booking/${gymBook.bookingId}">
+                        <button type="button" class="delete-btn">Cancel Booking</button>
+                    </a>
+                </td>
             </tr>
         </c:forEach>
     </tbody>
 </table>
+
      </div>
      <div class="form-group">
             <button type="button" onclick="goBack(); setActive(this);" class="tab">Back</button>

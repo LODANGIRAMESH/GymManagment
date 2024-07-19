@@ -47,6 +47,14 @@ th, td {
 th {
 	background-color: #333;
 }
+a.add_slot {
+        color: red;
+        text-decoration: none;
+    }
+
+    a.add_slot:hover {
+        color: blue;
+    }
 </style>
 
 <body>
@@ -64,6 +72,7 @@ th {
 						<th>Item Number</th>
 						<th>Item Name</th>
 						<th>Total Seat</th>
+						<th>Add To Slots</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -72,6 +81,7 @@ th {
 							<td>${item.itemId}</td>
 							<td>${item.itemName}</td>
 							<td>${item.totalSeat}</td>
+							<td><a href="<c:url value='/slot-item-add/${item.itemId}'/>" class="add_slot">Add To Slots</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

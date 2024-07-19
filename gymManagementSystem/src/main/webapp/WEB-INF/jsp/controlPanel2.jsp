@@ -273,19 +273,12 @@
     <div class="welcome-msg">Welcome <span id="name"></span> to the Gym.</div>
     <div class="tab-bar">
         <div style="display: flex; flex-direction: column; gap: 5px;">
-            <span>Manage Gym Item:</span>
-            <a href="/gymitem" onclick="setActive(this)" class="tab">Add New Gym Item</a>
-            <a href="/gymitems" onclick="setActive(this)" class="tab">Gym Item Report</a>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 5px;">
             <span>Manage Slots:</span>
-            <a href="/add-slot" onclick="setActive(this)" class="tab">Add New Slot</a>
             <a href="/slots" onclick="setActive(this)" class="tab">Slot Report</a>
             <a href="/gymBookList" onclick="setActive(this)" class="tab">Booked Slots</a>
         </div>
         <div style="display: flex; flex-direction: column; gap: 5px;">
             <span>Other actions:</span>
-          <!--    <a href="/book-slot" onclick="setActive(this)" class="tab">Slot Booking</a> -->
             <a href="/logout"><div class="tab">Logout</div></a>
         </div>
     </div>

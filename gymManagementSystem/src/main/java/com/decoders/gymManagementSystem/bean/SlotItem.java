@@ -2,8 +2,10 @@ package com.decoders.gymManagementSystem.bean;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "slot_item")
 public class SlotItem {
 
 	@EmbeddedId
