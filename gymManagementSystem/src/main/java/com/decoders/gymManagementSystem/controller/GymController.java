@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.decoders.gymManagementSystem.bean.Feedback;
 import com.decoders.gymManagementSystem.bean.GymBook;
 import com.decoders.gymManagementSystem.bean.GymItem;
 import com.decoders.gymManagementSystem.bean.Item;
 import com.decoders.gymManagementSystem.bean.Slot;
 import com.decoders.gymManagementSystem.bean.SlotItem;
 import com.decoders.gymManagementSystem.bean.SlotItemEmbed;
+import com.decoders.gymManagementSystem.dao.FeedBackDao;
 import com.decoders.gymManagementSystem.dao.GymBookDao;
 import com.decoders.gymManagementSystem.dao.GymBookImpl;
 import com.decoders.gymManagementSystem.dao.GymItemDao;
@@ -66,6 +68,8 @@ public class GymController {
 	
 	@Autowired 
 	private GymBookDao gymBookDao;
+	@Autowired
+	private FeedBackDao feedBackDao;
 	
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(GymController.class);
 	
@@ -311,5 +315,44 @@ public class GymController {
 	public ResponseEntity<String> getFullName(Principal principal) {
 		return ResponseEntity.ok(gymUserService.getName(principal));
 	}
+	/* @GetMapping("/feedback")
+	    public ModelAndView showFeedbackForm() {
+		  Feedback fb=new Feedback();
+		    Long newId=feedBackDao.generateFeedbackId();
+		    fb.setId(newId);
+		    ModelAndView mv = new ModelAndView("FeedbackForm");
+		    mv.addObject("feedback", fb);
+		    return mv;
+	    }*/
+	@GetMapping("/feedback")
+	public ModelAndView showFeedbackForm() {
+	    Feedback fb = new Feedback();
+	    Long newId = feedBackDao.generateFeedbackId();
+	    fb.setId(newId);
+	    ModelAndView mv = new ModelAndView("FeedbackForm");
+	    mv.addObject("feedback", fb);
+	    return mv;
+	}
+	@PostMapping("/submitFeedback")
+	public ModelAndView submitFeedback(@ModelAttribute("feedback") Feedback feedback) {
+	    feedBackDao.save(feedback);
+	    return new ModelAndView("redirect:/index");
+	}
+
+
+	/* @PostMapping("/submitFeedback")
+	    public ModelAndView submitFeedback(@ModelAttribute("feedback") Feedback feedback) {
+	        feedBackDao.save(feedback);
+	        return new ModelAndView("redirect:/index");
+	    }*/
+	   
+
+	    @GetMapping("/admin/feedbacks")
+	    public ModelAndView viewAdminFeedbacks() {
+	        List<Feedback> feedbackList = feedBackDao.findAll();
+	        ModelAndView mv = new ModelAndView("adminFeedbacks");
+	        mv.addObject("feedbackList", feedbackList);
+	        return mv;
+	    }
 	
 }

@@ -265,7 +265,7 @@
                 </div>
             </li> -->
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/admin/feedbacks">ViewFeedbacks</a></li>
         </ul>
     </div>
     <div style="margin-top: 70px;"></div>
